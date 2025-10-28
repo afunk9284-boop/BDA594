@@ -7,6 +7,33 @@
   <meta name="description" content="Methods and findings from 311 reports text analysis."/>
   <meta name="theme-color" content="#ffffff" />
   <link rel="stylesheet" href="assets/style.css"/>
+
+  <style>
+    /* Responsive iframe wrapper for the heatmap */
+    .viz-wrap {
+      position: relative;
+      width: 100%;
+      /* Aspect ratio—tweak as you like. Plotly resizes, so this is just a good starting box. */
+      padding-top: 42%;
+      background: #f5f5f5;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+    .viz-wrap > iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .viz-caption {
+      margin-top: .5rem;
+      color: #555;
+      font-size: .9rem;
+    }
+  </style>
 </head>
 <body>
   
@@ -22,17 +49,44 @@
   </div>
 </header>
 
-  <main>
-    <section class="container">
-      
-    <div class="" role="region" aria-label="Page title">
+<main>
+  <section class="container">
+    <div role="region" aria-label="Page title">
       <h1>311 Report Analysis · Weather, Policy, and Topic Modeling of 311 Reports on Homelessness in San Diego</h1>
       <p class="subtitle">Methods and findings from 311 reports text analysis.</p>
     </div>
-    
-      <article class="panel"><h2>311 Report Analysis</h2><p>Text preprocessing, topic modeling approach (e.g., LDA / BERTopic), validation, and interpretation of homelessness‑related themes.</p></article>
-    </section>
-  </main>
+
+    <article class="panel">
+      <h2>311 Report Analysis</h2>
+      <p>Text preprocessing, topic modeling approach (e.g., LDA / BERTopic), validation, and interpretation of homelessness-related themes.</p>
+    </article>
+
+    <!-- New: Interactive Topic Heatmap panel -->
+    <article class="panel">
+      <h2 class="sr-only">Interactive Topic Heatmap</h2>
+      <div class="viz-wrap" role="region" aria-label="Interactive Topic Heatmap">
+        <!--
+          Point this to your offline bundle (recommended):
+            topic_heatmap_offline.html
+          or to your CDN-backed file if that's what you have:
+            topic_heatmap.html
+        -->
+        <iframe
+          src="topic_heatmap_offline.html"
+          title="Monthly Activity — Interactive Topic Heatmap"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p class="viz-caption">
+        Tip: click any square to see that month’s sample report texts for the selected topic.
+      </p>
+      <noscript>
+        This interactive visualization requires JavaScript. Please enable it to view the heatmap.
+      </noscript>
+    </article>
+
+  </section>
+</main>
   
 <footer>
   <div class="container foot"><small>© <span id="y"></span> Project Site</small></div>
