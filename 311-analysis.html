@@ -37,7 +37,15 @@
       <span>Weather, Policy, & Topic Modeling (San Diego)</span>
     </div>
     <nav class="navlinks" aria-label="Primary">
-      <a href="index.html">Home</a><a href="about.html">About</a><a href="311-analysis.html">311 Analysis</a><a href="migration.html">Encampment Migration</a><a href="weather.html">Weather</a><a href="policy.html">Policy</a><a href="conclusion.html">Conclusion</a><a href="data.html">Data Description</a><a href="team.html">Team</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="311-analysis.html">311 Analysis</a>
+      <a href="migration.html">Encampment Migration</a>
+      <a href="weather.html">Weather</a>
+      <a href="policy.html">Policy</a>
+      <a href="conclusion.html">Conclusion</a>
+      <a href="data.html">Data Description</a>
+      <a href="team.html">Team</a>
     </nav>
   </div>
 </header>
@@ -54,21 +62,38 @@
       <p>Text preprocessing, topic modeling approach (e.g., LDA / BERTopic), validation, and interpretation of homelessness-related themes.</p>
     </article>
 
-    <!-- Inline Heatmap Section -->
-    <article class="panel viz-container">
+    <!-- Top Words (first) -->
+    <article class="panel viz-container viz-top-words">
+      <h2>Interactive Top Words by Topic</h2>
+
+      <!-- BEGIN INLINE TOP WORDS -->
+      <!-- ✅ Paste everything from inside <body> ... </body> of topic_top_words_offline.html here -->
+      <div id="topic_top_words_light"></div>
+      <div id="topic_top_words_panel_light">
+        <b>Topic details</b> (click a bar or label)
+      </div>
+      <script>
+        // Paste your Plotly.newPlot(...) + click handler from topic_top_words_offline.html here
+      </script>
+      <!-- END INLINE TOP WORDS -->
+
+      <p class="viz-caption">
+        Tip: click any topic to inspect its top words and weights.
+      </p>
+    </article>
+
+    <!-- Heatmap (second) -->
+    <article class="panel viz-container viz-heatmap">
       <h2>Interactive Topic Heatmap</h2>
 
-      <!-- Paste ONLY the body contents of topic_heatmap_offline.html below -->
       <!-- BEGIN INLINE HEATMAP -->
-      <!-- ✅ Copy everything inside the <body> ... </body> of topic_heatmap_offline.html here -->
-      <!-- Example placeholder -->
+      <!-- ✅ Paste everything from inside <body> ... </body> of topic_heatmap_offline.html here -->
       <div id="topic_heat_light"></div>
       <div id="topic_heat_panel_light">
         <b>Cell details</b> (click a square above)
       </div>
       <script>
-        // You would paste your <script> section from topic_heatmap_offline.html here
-        // (the part with Plotly.newPlot(...) and the click handler)
+        // Paste your Plotly.newPlot(...) + click handler from topic_heatmap_offline.html here
       </script>
       <!-- END INLINE HEATMAP -->
 
@@ -77,11 +102,28 @@
       </p>
     </article>
 
+    <!-- Make Top Words double-height -->
+    <script>
+      (function () {
+        const TW = document.querySelector('.viz-top-words');
+        if (!TW) return;
+        const graphs = TW.querySelectorAll('.plotly-graph-div, [id^="plotly"]');
+        graphs.forEach(g => {
+          g.style.height = '560px'; // about double a normal plot height
+          if (window.Plotly && g && g.data) {
+            window.Plotly.relayout(g, { height: 560 }).catch(() => {});
+          }
+        });
+      })();
+    </script>
+
   </section>
 </main>
   
 <footer>
-  <div class="container foot"><small>© <span id="y"></span> Project Site</small></div>
+  <div class="container foot">
+    <small>© <span id="y"></span> Project Site</small>
+  </div>
 </footer>
 <script src="assets/site.js"></script>
 
