@@ -54,15 +54,25 @@
       <p>Text preprocessing, topic modeling approach (e.g., LDA / BERTopic), validation, and interpretation of homelessness-related themes.</p>
     </article>
 
-    <!-- Inline Heatmap Section -->
+    <!-- === Top Words Grid Section === -->
+    <article class="panel viz-container">
+      <h2>Topic Modeling — Top Words per Topic</h2>
+      <!-- INLINE FROM topic_top_words_offline.html -->
+      <div class="wrap">
+        <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <!-- Paste of Plotly.min.js bundle + figure content -->
+        <!-- BEGIN Plotly Figure -->
+        <!-- (content from your topic_top_words_offline.html goes here exactly as is) -->
+      </div>
+      <p class="viz-caption">Top terms (by topic weight) visualized across all selected homelessness-related topics.</p>
+    </article>
+
+    <!-- === Interactive Heatmap Section === -->
     <article class="panel viz-container">
       <h2>Interactive Topic Heatmap</h2>
-
-      <!-- BEGIN INLINE HEATMAP -->
       <div style="max-width:1030px; width:100%; margin:0 auto">
         <div id="topic_heat_light" class="plotly-graph-div" style="height:280px;" role="img" aria-label="Monthly activity interactive topic heatmap"></div>
       </div>
-
       <div id="topic_heat_panel_light" style="
         background: rgba(255,255,255,0.18);
         color:#111;
@@ -87,12 +97,11 @@
       <script>
         // Full dataset of descriptions (descMap)
         const descMap = {
-          // Paste your JSON mapping here, e.g. "2|2024-03": ["Sample desc 1","Sample desc 2"]
+          // (paste JSON mapping here)
         };
 
         window.addEventListener('DOMContentLoaded', function () {
-          // === Your Plotly.newPlot call goes here ===
-          // Replace below with your actual figure data & layout from topic_heatmap_offline.html
+          // Paste your full Plotly.newPlot("topic_heat_light", [...]) here
           // Example:
           // Plotly.newPlot("topic_heat_light", tracesArray, layoutObject, {responsive:true});
 
@@ -100,8 +109,6 @@
           const panel = document.getElementById('topic_heat_panel_light');
 
           if (!g) return;
-
-          // Click → show descriptions
           g.on('plotly_click', function (ev) {
             const pt = ev.points && ev.points[0];
             if (!pt) return;
@@ -125,7 +132,6 @@
           });
         });
       </script>
-      <!-- END INLINE HEATMAP -->
 
       <p class="viz-caption">
         Tip: click any square to see that month’s sample report texts for the selected topic.
