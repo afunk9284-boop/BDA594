@@ -1,131 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>311 Report Analysis · Weather, Policy, and Topic Modeling of 311 Reports on Homelessness in San Diego</title>
-  <meta name="description" content="Methods and findings from 311 reports text analysis."/>
-  <meta name="theme-color" content="#ffffff" />
-  <link rel="stylesheet" href="assets/style.css"/>
-  <style>
-    body {
-      background: #f5f5f5;
-      color: #111;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
-    .viz-container {
-      margin-top: 1.5rem;
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 8px;
-      background: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-      padding: 1rem;
-    }
-    .viz-caption {
-      margin-top: .5rem;
-      color: #555;
-      font-size: .9rem;
-    }
-  </style>
-</head>
-<body>
-  
-<header class="site">
-  <div class="container nav">
-    <div class="brand">
-      <span class="brand-badge" aria-hidden="true"></span>
-      <span>Weather, Policy, & Topic Modeling (San Diego)</span>
-    </div>
-    <nav class="navlinks" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="311-analysis.html">311 Analysis</a>
-      <a href="migration.html">Encampment Migration</a>
-      <a href="weather.html">Weather</a>
-      <a href="policy.html">Policy</a>
-      <a href="conclusion.html">Conclusion</a>
-      <a href="data.html">Data Description</a>
-      <a href="team.html">Team</a>
-    </nav>
-  </div>
-</header>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Weather, Policy, & Topic Modeling (San Diego) — 311 Report Analysis</title>
+<style>
+/* === Canonical 311-analysis formatting style (light) === */
+:root {
+--bg: #f5f5f5;
+--fg: #111;
+--muted: #666;
+--panel: #fff;
+--border: #e5e5e5;
+--shadow: 0 1px 2px rgba(0,0,0,.04), 0 6px 18px rgba(0,0,0,.08);
+--brand: #0b62f2;
+}
+html, body { height: 100%; }
+body {
+background: var(--bg);
+color: var(--fg);
+margin: 0;
+font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+line-height: 1.5;
+}
+header.site {
+background: var(--panel);
+border-bottom: 1px solid var(--border);
+position: sticky; top: 0; z-index: 20;
+}
+.wrap { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+.brand { font-size: 1.25rem; font-weight: 700; letter-spacing: .2px; }
+nav a { color: var(--fg); text-decoration: none; margin-right: 1rem; }
 
-<main>
-  <section class="container">
-    <div role="region" aria-label="Page title">
-      <h1>311 Report Analysis · Weather, Policy, and Topic Modeling of 311 Reports on Homelessness in San Diego</h1>
-      <p class="subtitle">Methods and findings from 311 reports text analysis.</p>
-    </div>
 
-    <article class="panel">
-      <h2>311 Report Analysis</h2>
-      <p>Text preprocessing, topic modeling approach (e.g., LDA / BERTopic), validation, and interpretation of homelessness-related themes.</p>
-    </article>
+main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem 4rem; }
+h1 { font-size: 2rem; margin: .5rem 0 0; }
+.subtitle { color: var(--muted); margin-top: .25rem; }
 
-    <!-- Top Words (first) -->
-    <article class="panel viz-container viz-top-words">
-      <h2>Interactive Top Words by Topic</h2>
 
-      <!-- BEGIN INLINE TOP WORDS -->
-      <!-- ✅ Paste everything from inside <body> ... </body> of topic_top_words_offline.html here -->
-      <div id="topic_top_words_light"></div>
-      <div id="topic_top_words_panel_light">
-        <b>Topic details</b> (click a bar or label)
-      </div>
-      <script>
-        // Paste your Plotly.newPlot(...) + click handler from topic_top_words_offline.html here
-      </script>
-      <!-- END INLINE TOP WORDS -->
+article.intro {
+background: var(--panel);
+border: 1px solid var(--border);
+border-radius: 14px;
+box-shadow: var(--shadow);
+padding: 1rem 1.25rem;
+margin-top: 1rem;
+}
 
-      <p class="viz-caption">
-        Tip: click any topic to inspect its top words and weights.
-      </p>
-    </article>
 
-    <!-- Heatmap (second) -->
-    <article class="panel viz-container viz-heatmap">
-      <h2>Interactive Topic Heatmap</h2>
+/* Visualization containers */
+.viz-container {
+background: var(--panel);
+border: 1px solid var(--border);
+border-radius: 16px;
+box-shadow: var(--shadow);
+padding: 1rem;
+margin: 1.25rem 0 1.75rem;
+}
+.viz-container h2 { font-size: 1.25rem; margin: .25rem 0 0.75rem; }
+.viz-caption { font-size: .9rem; color: var(--muted); margin-top: .5rem; }
 
-      <!-- BEGIN INLINE HEATMAP -->
-      <!-- ✅ Paste everything from inside <body> ... </body> of topic_heatmap_offline.html here -->
-      <div id="topic_heat_light"></div>
-      <div id="topic_heat_panel_light">
-        <b>Cell details</b> (click a square above)
-      </div>
-      <script>
-        // Paste your Plotly.newPlot(...) + click handler from topic_heatmap_offline.html here
-      </script>
-      <!-- END INLINE HEATMAP -->
 
-      <p class="viz-caption">
-        Tip: click any square to see that month’s sample report texts for the selected topic.
-      </p>
-    </article>
-
-    <!-- Make Top Words double-height -->
-    <script>
-      (function () {
-        const TW = document.querySelector('.viz-top-words');
-        if (!TW) return;
-        const graphs = TW.querySelectorAll('.plotly-graph-div, [id^="plotly"]');
-        graphs.forEach(g => {
-          g.style.height = '560px'; // about double a normal plot height
-          if (window.Plotly && g && g.data) {
-            window.Plotly.relayout(g, { height: 560 }).catch(() => {});
-          }
-        });
-      })();
-    </script>
-
-  </section>
-</main>
-  
-<footer>
-  <div class="container foot">
-    <small>© <span id="y"></span> Project Site</small>
-  </div>
-</footer>
-<script src="assets/site.js"></script>
-
-</body>
-</html>
+/* Iframe presentation */
+.viz-frame {
+width: 100%;
+border: 0;
+background: #ffffff;
+border-radius: 12px;
+box-shadow: inset 0 0 0 1px var(--border);
+/* A safe minimum; auto-resize script below will grow it */
+min-height: 640px;
+}
