@@ -3,83 +3,87 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>311 Report Analysis — Figures</title>
+  <title>311 Report Analysis · Weather, Policy, and Topic Modeling of 311 Reports on Homelessness in San Diego</title>
+  <meta name="description" content="Methods and findings from 311 reports text analysis."/>
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="stylesheet" href="assets/style.css"/>
   <style>
     body {
-      background: #0b0d10;
-      color: #e8eaed;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+      background: #f5f5f5;
+      color: #111;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
-    .wrap {
-      max-width: 1200px;
-      margin: 24px auto;
-      padding: 0 16px 48px;
-    }
-    header {
-      text-align: center;
-      padding: 24px 0;
-    }
-    h1 {
-      font-size: 1.8rem;
-      margin: 0;
-      color: #8ab4f8;
-    }
-    h2 {
-      font-size: 1.2rem;
-      margin: 0;
-    }
-    .card {
-      background: #15181d;
-      border: 1px solid #2b3036;
-      border-radius: 16px;
-      overflow: hidden;
-      margin: 24px 0;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-    }
-    .card header {
-      padding: 14px 16px;
-      border-bottom: 1px solid #2b3036;
-      background: linear-gradient(180deg, rgba(255,255,255,.02), transparent);
-    }
-    iframe {
-      width: 100%;
-      border: 0;
-      display: block;
+    .viz-container {
+      margin-top: 1.5rem;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 8px;
       background: #fff;
-      min-height: 400px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      padding: 1rem;
     }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #9aa0a6;
-      font-size: 0.9rem;
+    .viz-caption {
+      margin-top: .5rem;
+      color: #555;
+      font-size: .9rem;
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>311 Report Analysis — San Diego</h1>
-      <p style="color:#9aa0a6;">Weather, Policy, and Topic Modeling of 311 Reports on Homelessness</p>
-    </header>
-
-    <!-- === Top Words Visualization === -->
-    <section class="card">
-      <header><h2>Topic Modeling — Top Words per Topic</h2></header>
-      <iframe src="topic_top_words_offline.html" title="Top Words per Topic"></iframe>
-    </section>
-
-    <!-- === Interactive Heatmap === -->
-    <section class="card">
-      <header><h2>Interactive Topic Heatmap</h2></header>
-      <iframe src="topic_heatmap.html" title="Interactive Topic Heatmap"></iframe>
-    </section>
-
-    <footer>
-      © <script>document.write(new Date().getFullYear());</script> Project Site — all figures load directly from their HTML exports.
-    </footer>
+  
+<header class="site">
+  <div class="container nav">
+    <div class="brand">
+      <span class="brand-badge" aria-hidden="true"></span>
+      <span>Weather, Policy, & Topic Modeling (San Diego)</span>
+    </div>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="index.html">Home</a><a href="about.html">About</a><a href="311-analysis.html">311 Analysis</a><a href="migration.html">Encampment Migration</a><a href="weather.html">Weather</a><a href="policy.html">Policy</a><a href="conclusion.html">Conclusion</a><a href="data.html">Data Description</a><a href="team.html">Team</a>
+    </nav>
   </div>
+</header>
+
+<main>
+  <section class="container">
+    <div role="region" aria-label="Page title">
+      <h1>311 Report Analysis · Weather, Policy, and Topic Modeling of 311 Reports on Homelessness in San Diego</h1>
+      <p class="subtitle">Methods and findings from 311 reports text analysis.</p>
+    </div>
+
+    <article class="panel">
+      <h2>311 Report Analysis</h2>
+      <p>Text preprocessing, topic modeling approach (e.g., LDA / BERTopic), validation, and interpretation of homelessness-related themes.</p>
+    </article>
+
+    <!-- Inline Heatmap Section -->
+    <article class="panel viz-container">
+      <h2>Interactive Topic Heatmap</h2>
+
+      <!-- Paste ONLY the body contents of topic_heatmap_offline.html below -->
+      <!-- BEGIN INLINE HEATMAP -->
+      <!-- ✅ Copy everything inside the <body> ... </body> of topic_heatmap_offline.html here -->
+      <!-- Example placeholder -->
+      <div id="topic_heat_light"></div>
+      <div id="topic_heat_panel_light">
+        <b>Cell details</b> (click a square above)
+      </div>
+      <script>
+        // You would paste your <script> section from topic_heatmap_offline.html here
+        // (the part with Plotly.newPlot(...) and the click handler)
+      </script>
+      <!-- END INLINE HEATMAP -->
+
+      <p class="viz-caption">
+        Tip: click any square to see that month’s sample report texts for the selected topic.
+      </p>
+    </article>
+
+  </section>
+</main>
+  
+<footer>
+  <div class="container foot"><small>© <span id="y"></span> Project Site</small></div>
+</footer>
+<script src="assets/site.js"></script>
+
 </body>
 </html>
