@@ -7,6 +7,33 @@
   <meta name="description" content="Weather variables and their relationships to topics/migration."/>
   <meta name="theme-color" content="#ffffff" />
   <link rel="stylesheet" href="assets/style.css"/>
+  <style>
+    /* Light tweaks specific to iframes inside our panel layout */
+    .viz-container iframe {
+      width: 100%;
+      height: 600px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    @media (max-width: 800px) {
+      .viz-container iframe { height: 400px; }
+    }
+    @media (max-width: 500px) {
+      .viz-container iframe { height: 300px; }
+    }
+    .viz-caption {
+      color: #666;
+      font-size: 0.95rem;
+      margin-top: .5rem;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+  </style>
 </head>
 <body>
   
@@ -29,8 +56,48 @@
       <h1>Weather · Weather, Policy, and Topic Modeling of 311 Reports on Homelessness in San Diego</h1>
       <p class="subtitle">Weather variables and their relationships to topics/migration.</p>
     </div>
-    
-      <article class="panel"><h2>Weather</h2><p>Temperature, precipitation, and seasonal effects; thresholds and event days; associations with topic prevalence and encampment changes.</p></article>
+
+      <!-- === Weather vs Homelessness Over Time === -->
+      <section class="panel viz-container">
+        <h2>Weather vs Homelessness Over Time</h2>
+        <div style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">
+          <strong>Datasets:</strong>
+          <ul style="margin: 0.3rem 0 0.5rem 1.5rem;">
+            <li>ERA5-Land Monthly Means (Reanalysis NetCDF)</li>
+            <li>Downtown SD Monthly Homeless Totals</li>
+          </ul>
+        </div>
+        <p class="viz-caption">Temporal patterns showing the relationship between weather conditions and homelessness-related 311 reports.</p>
+        <iframe src="climate/Weather vs Homelessness Over Time.html" title="Weather vs Homelessness Over Time"></iframe>
+      </section>
+
+      <!-- === Standardized Homelessness vs Heat === -->
+      <section class="panel viz-container">
+        <h2>Standardized Homelessness vs Heat</h2>
+        <div style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">
+          <strong>Datasets:</strong>
+          <ul style="margin: 0.3rem 0 0.5rem 1.5rem;">
+            <li>NOAA GHCN-Daily (Station USW00023188) → daily TMAX values</li>
+            <li>Downtown SD Monthly Homeless Totals</li>
+          </ul>
+        </div>
+        <p class="viz-caption">Correlation analysis between heat levels and homelessness reports.</p>
+        <iframe src="climate/Standardized Homelessness vs Heat.html" title="Standardized Homelessness vs Heat"></iframe>
+      </section>
+
+      <!-- === Standardized Homelessness vs Precipitation === -->
+      <section class="panel viz-container">
+        <h2>Standardized Homelessness vs Precipitation Monthly</h2>
+        <div style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">
+          <strong>Datasets:</strong>
+          <ul style="margin: 0.3rem 0 0.5rem 1.5rem;">
+            <li>NOAA GHCN-Daily (Station USW00023188) → daily precipitation (PRCP)</li>
+            <li>Downtown SD Monthly Homeless Totals</li>
+          </ul>
+        </div>
+        <p class="viz-caption">Monthly precipitation patterns and their impact on homelessness-related service requests.</p>
+        <iframe src="climate/Standardized Homelessness vs Precipitation Monthly.html" title="Standardized Homelessness vs Precipitation Monthly"></iframe>
+      </section>
     </section>
   </main>
   
